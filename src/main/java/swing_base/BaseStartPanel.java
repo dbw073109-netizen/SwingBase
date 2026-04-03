@@ -1,4 +1,4 @@
-package swing_base;
+package main.java.swing_base;
 
 import java.util.List;
 import java.util.function.Consumer;

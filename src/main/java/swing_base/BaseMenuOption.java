@@ -1,4 +1,4 @@
-package swing_base;
+package main.java.swing_base;
 
 /**
  * An option for a menu that is used in BaseStartPanel.java. Holds
