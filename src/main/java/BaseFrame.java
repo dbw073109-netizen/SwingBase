@@ -1,5 +1,3 @@
-package main.java.swing_base;
-
 import java.awt.Component;
 
 import javax.swing.JComponent;

@@ -1,5 +1,4 @@
-package main.java.swing_base;
-/**
+/** 
  * A shorthand for an AbstractAction that simply runs the Runnable whenever the action is performed.
  */
 public class Action extends javax.swing.AbstractAction {

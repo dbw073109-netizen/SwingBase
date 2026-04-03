@@ -1,5 +1,3 @@
-package main.java.swing_base;
-
 /**
  * An option for a menu that is used in BaseStartPanel.java. Holds
  * a value(of type T), which is used when onSelection(...) is called 
