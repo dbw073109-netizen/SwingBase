@@ -6,7 +6,7 @@
 
     <groupId>com.github.dbw073109-netizen</groupId>
     <artifactId>SwingBase</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.4</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
