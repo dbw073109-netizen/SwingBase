@@ -2,6 +2,7 @@ package swing_base;
 
 import java.awt.Component;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
@@ -11,7 +12,7 @@ import javax.swing.KeyStroke;
  * keys to Runnables.
  */
 public abstract class BaseFrame extends JFrame {
-    protected MainPanel mainPanel;
+    protected final MainPanel mainPanel;
 
     protected BaseFrame() {
         mainPanel = new MainPanel();
@@ -23,8 +24,14 @@ public abstract class BaseFrame extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Binds a key to a Runnable action.
+     * @param keyCode the key as defined in KeyEvent.{keyCode}
+     * @param task the task that will be ran when the key is pressed.
+     */
     protected void bind(int keyCode, Runnable task) {
-        mainPanel.getInputMap().put(KeyStroke.getKeyStroke(keyCode, 0), keyCode);
+        mainPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(keyCode, 0), keyCode);
         mainPanel.getActionMap().put(keyCode, new Action(task));
     }
 
@@ -36,7 +43,10 @@ public abstract class BaseFrame extends JFrame {
         return super.add(comp);
     }
 
+    /** Initialize just the BaseFrame. */
     protected abstract void initialize();
+    /** Add BaseFrames to the BaseFrame and define simple behavior that is required of them in this class. */
     protected abstract void addComponents();
+    /** Bind keys to actions using the bind() method. */
     protected abstract void bindKeys();
 }   

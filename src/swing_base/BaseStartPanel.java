@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 /**
  * A BasePanel for a typical starting screen for a program. Includes
- * a title and a list of options whose actions are defined in 
+ * a title and a list of options of type T whose actions are defined in 
  * initializeOptions() and are called in onSelection(...), likely
  * in a BaseFrame instance.
  */
@@ -28,7 +28,6 @@ public abstract class BaseStartPanel<T> extends BasePanel {
                 setLayout(new java.awt.GridLayout(options.size(), 1));
                 for (BaseMenuOption<T> option : options) {
                     add(option);
-                    option.putClientProperty(option.getKey(), option.getValue());
                 }
             }
         };
@@ -47,11 +46,7 @@ public abstract class BaseStartPanel<T> extends BasePanel {
      * @param consumer takes in a value defined by the specific option
      */
     public void onSelection(Consumer<T> consumer) {
-        options.stream().forEach(option -> {
-            option.addActionListener(new Action(() -> {
-                consumer.accept(option.getValue());
-            }));
-        });
+        options.stream().forEach(option -> option.addActionListener(new Action(() -> consumer.accept(option.getValue()))));
     }
 
     /**
@@ -61,9 +56,7 @@ public abstract class BaseStartPanel<T> extends BasePanel {
      * @param task the task that will be ran on option press
      */
     public void onSelection(Runnable task) {
-        options.stream().forEach(option -> {
-            option.addActionListener(new Action(task));
-        });
+        options.stream().forEach(option -> option.addActionListener(new Action(task)));
     }
 
     protected abstract void initialize();

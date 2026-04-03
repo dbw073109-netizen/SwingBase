@@ -8,7 +8,7 @@ import javax.swing.JPanel;
  * A MainPanel is where BaseFrames are added to a BaseFrame. Can
  * only hold BaseFrames and not any other Component for consistency.
  */
-public class MainPanel extends JPanel {
+public final class MainPanel extends JPanel {
     /** Only instantiable by BaseFrame */
     MainPanel() {
     }
